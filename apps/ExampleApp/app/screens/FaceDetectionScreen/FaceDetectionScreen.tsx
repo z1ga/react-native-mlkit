@@ -57,7 +57,7 @@ const FaceDetectionScreenComponent: FC<FaceDetectionScreenProps> = observer(
       clearFaces,
       status: faceDetectorStatus,
       error: faceDetectorError,
-    } = useFacesInPhoto(image?.uri)
+    } = useFacesInPhoto(image?.uri ?? image?.localUri ?? "")
 
     const boxes = useMemo(() => {
       return faces.map((face, index) => {
