@@ -78,7 +78,9 @@ export function useObjectDetectionModels<T extends AssetRecord>({
       const newModels = Object.fromEntries(models) as Partial<Models<T>>;
       setLoadedModels(newModels);
     }
-
+    if (Object.keys(loadedModels).length > 0) {
+      return;
+    }
     if ((assetObjects && !assetsError) || loadDefaultModel) {
       loadModels();
     }
